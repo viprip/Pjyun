@@ -1,0 +1,12 @@
+/*!
+  \contentspage{index.html}{Pjyun.Controls.Cards}
+  \page index.html
+
+  \title Pjyun.Controls.Cards
+
+  The Pjyun.Controls.Cards module provides a set of specific controls for the Pjyun application.
+
+  \section1 Cards
+  The following QML types allow to use different cards for a project.
+  \annotatedlist pjyun_controls_cards
+*/

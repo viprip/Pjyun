@@ -19,13 +19,14 @@
 import qbs 1.0
 
 Project {
-    name: "QtQuick"
+    name: "Pjyun.Controls.Cards"
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
     //  References                                                                                //
     ////////////////////////////////////////////////////////////////////////////////////////////////
     references: [
-        "pjyun-controls-cards",
-        "stoiridh-settings"
+        "doc",
+        "src",
+        "tests"
     ]
 }

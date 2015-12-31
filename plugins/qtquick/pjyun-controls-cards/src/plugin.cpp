@@ -16,16 +16,11 @@
 //            along with this program.  If not, see <http://www.gnu.org/licenses/>.               //
 //                                                                                                //
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-import qbs 1.0
+#include "plugin.hpp"
 
-Project {
-    name: "QtQuick"
+#include <qqml.h>
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    //  References                                                                                //
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    references: [
-        "pjyun-controls-cards",
-        "stoiridh-settings"
-    ]
+void PjyunControlsCardsPlugin::registerTypes(const char *uri)
+{
+    // @uri Pjyun.Controls.Cards
 }

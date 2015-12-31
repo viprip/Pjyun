@@ -1,0 +1,13 @@
+/*!
+  \qmlmodule Pjyun.Controls.Cards 1.0
+  \title Pjyun.Controls.Cards QML Types
+  \ingroup qmlmodules
+  \brief Provides QML types to extend the Pjyun application.
+
+  The QML types can be imported into your application using the following import statement in your
+  \c {.qml} file.
+
+  \code
+  import Pjyun.Controls.Cards 1.0
+  \endcode
+*/

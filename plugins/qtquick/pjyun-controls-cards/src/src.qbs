@@ -18,14 +18,17 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 import qbs 1.0
 
-Project {
-    name: "QtQuick"
+StoiridhQuickPlugin {
+    name: "Pjyun.Controls.Cards"
+    targetName: "pjyun-controls-cards"
+    uri: "Pjyun.Controls.Cards"
+    version: "1.0"
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
-    //  References                                                                                //
+    //  Sources                                                                                   //
     ////////////////////////////////////////////////////////////////////////////////////////////////
-    references: [
-        "pjyun-controls-cards",
-        "stoiridh-settings"
+    files: [
+        "plugin.cpp",
+        "plugin.hpp",
     ]
 }
