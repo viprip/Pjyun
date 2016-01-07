@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                //
-//            Copyright (C) 2015 William McKIE                                                    //
+//            Copyright (C) 2015-2016 William McKIE                                               //
 //                                                                                                //
 //            This program is free software: you can redistribute it and/or modify                //
 //            it under the terms of the GNU General Public License as published by                //
@@ -21,10 +21,10 @@
 
 #include <QQmlExtensionPlugin>
 
-class PjyunControlsCardsPlugin : public QQmlExtensionPlugin
+class PjyunControlsCardsPlugin final : public QQmlExtensionPlugin
 {
     Q_OBJECT
-    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QQmlExtensionInterface")
+    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QQmlExtensionInterface/1.0")
 
 public:
     void registerTypes(const char *uri) override;

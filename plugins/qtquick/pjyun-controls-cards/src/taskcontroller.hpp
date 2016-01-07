@@ -16,18 +16,49 @@
 //            along with this program.  If not, see <http://www.gnu.org/licenses/>.               //
 //                                                                                                //
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-#include "plugin.hpp"
+#ifndef PJYUN_CONTROLS_CARDS_TASKCONTROLLER_HPP
+#define PJYUN_CONTROLS_CARDS_TASKCONTROLLER_HPP
 
-#include "task.hpp"
-#include "taskcontroller.hpp"
-#include "taskgroup.hpp"
+#include <QObject>
+#include <QPointer>
+#include <QVector>
 
-#include <qqml.h>
+class Task;
 
-void PjyunControlsCardsPlugin::registerTypes(const char *uri)
+class TaskController : public QObject
 {
-    // @uri Pjyun.Controls.Cards
-    qmlRegisterType<Task>(uri, 1, 0, "Task");
-    qmlRegisterType<TaskController>(uri, 1, 0, "TaskController");
-    qmlRegisterType<TaskGroup>(uri, 1, 0, "TaskGroup");
+    Q_OBJECT
+    Q_PROPERTY(bool condition READ condition NOTIFY conditionChanged)
+
+public:
+    explicit TaskController(QObject *parent = nullptr);
+
+    inline bool condition() const;
+
+    void addTask(Task *task);
+    void removeTask(Task *task);
+
+signals:
+    void conditionChanged();
+    void completed();
+
+private slots:
+    void evaluate();
+
+private:
+    Q_DISABLE_COPY(TaskController)
+
+    QVector<QPointer<Task>> m_tasks;
+    bool m_condition{false};
+};
+
+//--------------------------------------------------------------------------------------------------
+
+inline bool TaskController::condition() const
+{
+    return m_condition;
 }
+
+//--------------------------------------------------------------------------------------------------
+
+#endif // PJYUN_CONTROLS_CARDS_TASKCONTROLLER_HPP

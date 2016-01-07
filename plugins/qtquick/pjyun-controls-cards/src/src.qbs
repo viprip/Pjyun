@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                //
-//            Copyright (C) 2015 William McKIE                                                    //
+//            Copyright (C) 2015-2016 William McKIE                                               //
 //                                                                                                //
 //            This program is free software: you can redistribute it and/or modify                //
 //            it under the terms of the GNU General Public License as published by                //
@@ -30,5 +30,11 @@ StoiridhQuickPlugin {
     files: [
         "plugin.cpp",
         "plugin.hpp",
+        "task.cpp",
+        "task.hpp",
+        "taskcontroller.cpp",
+        "taskcontroller.hpp",
+        "taskgroup.cpp",
+        "taskgroup.hpp",
     ]
 }

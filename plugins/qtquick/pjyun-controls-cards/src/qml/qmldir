@@ -1,3 +1,4 @@
 module Pjyun.Controls.Cards
 plugin pjyun-controls-cards
 classname PjyunControlsCardsPlugin
+typeinfo plugins.qmltypes

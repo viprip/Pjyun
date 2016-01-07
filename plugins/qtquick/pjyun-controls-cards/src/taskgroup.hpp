@@ -16,18 +16,64 @@
 //            along with this program.  If not, see <http://www.gnu.org/licenses/>.               //
 //                                                                                                //
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-#include "plugin.hpp"
+#ifndef PJYUN_CONTROLS_CARDS_TASKGROUP_HPP
+#define PJYUN_CONTROLS_CARDS_TASKGROUP_HPP
+
+#include <QObject>
+#include <QQmlListProperty>
 
 #include "task.hpp"
-#include "taskcontroller.hpp"
-#include "taskgroup.hpp"
 
-#include <qqml.h>
-
-void PjyunControlsCardsPlugin::registerTypes(const char *uri)
+class TaskGroup : public QObject
 {
-    // @uri Pjyun.Controls.Cards
-    qmlRegisterType<Task>(uri, 1, 0, "Task");
-    qmlRegisterType<TaskController>(uri, 1, 0, "TaskController");
-    qmlRegisterType<TaskGroup>(uri, 1, 0, "TaskGroup");
+    Q_OBJECT
+    Q_PROPERTY(QQmlListProperty<Task> tasks READ tasks NOTIFY tasksChanged FINAL)
+    Q_PROPERTY(bool empty READ isEmpty FINAL)
+    Q_PROPERTY(int count READ count FINAL)
+    Q_CLASSINFO("DefaultProperty", "tasks")
+
+public:
+    explicit TaskGroup(QObject *parent = nullptr);
+
+    QQmlListProperty<Task> tasks();
+
+    inline bool isEmpty() const;
+    inline int count() const;
+
+    Q_INVOKABLE void add(Task *task);
+    Q_INVOKABLE void insert(int index, Task *task);
+    Q_INVOKABLE void removeAt(int index);
+    Q_INVOKABLE Task *takeAt(int index);
+    Q_INVOKABLE Task *at(int index) const;
+    Q_INVOKABLE void clear();
+
+signals:
+    void tasksChanged();
+
+private:
+    static void task_append(QQmlListProperty<Task> *property, Task *task);
+    static Task *task_at(QQmlListProperty<Task> *property, int index);
+    static void task_clear(QQmlListProperty<Task> *property);
+    static int task_count(QQmlListProperty<Task> *property);
+
+private:
+    Q_DISABLE_COPY(TaskGroup)
+
+    QList<Task *> m_tasks;
+};
+
+//--------------------------------------------------------------------------------------------------
+
+inline bool TaskGroup::isEmpty() const
+{
+    return m_tasks.isEmpty();
 }
+
+inline int TaskGroup::count() const
+{
+    return m_tasks.count();
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#endif // PJYUN_CONTROLS_CARDS_TASKGROUP_HPP

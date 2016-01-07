@@ -16,18 +16,6 @@
 //            along with this program.  If not, see <http://www.gnu.org/licenses/>.               //
 //                                                                                                //
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-#include "plugin.hpp"
+#include <QtQuickTest/QtQuickTest>
 
-#include "task.hpp"
-#include "taskcontroller.hpp"
-#include "taskgroup.hpp"
-
-#include <qqml.h>
-
-void PjyunControlsCardsPlugin::registerTypes(const char *uri)
-{
-    // @uri Pjyun.Controls.Cards
-    qmlRegisterType<Task>(uri, 1, 0, "Task");
-    qmlRegisterType<TaskController>(uri, 1, 0, "TaskController");
-    qmlRegisterType<TaskGroup>(uri, 1, 0, "TaskGroup");
-}
+QUICK_TEST_MAIN(Test.Pjyun.Controls.Cards)
