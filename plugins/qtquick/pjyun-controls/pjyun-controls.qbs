@@ -19,15 +19,14 @@
 import qbs 1.0
 
 Project {
-    name: "QtQuick"
+    name: "Pjyun.Controls"
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
     //  References                                                                                //
     ////////////////////////////////////////////////////////////////////////////////////////////////
     references: [
-        "pjyun-controls",
-        "pjyun-controls-cards",
-        "stoiridh-controls",
-        "stoiridh-settings"
+        "doc",
+        "src",
+        "tests"
     ]
 }

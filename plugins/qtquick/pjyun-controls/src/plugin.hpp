@@ -16,18 +16,18 @@
 //            along with this program.  If not, see <http://www.gnu.org/licenses/>.               //
 //                                                                                                //
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-import qbs 1.0
+#ifndef PJYUN_CONTROLS_PJYUNCONTROLSPLUGIN_HPP
+#define PJYUN_CONTROLS_PJYUNCONTROLSPLUGIN_HPP
 
-Project {
-    name: "QtQuick"
+#include <QQmlExtensionPlugin>
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    //  References                                                                                //
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    references: [
-        "pjyun-controls",
-        "pjyun-controls-cards",
-        "stoiridh-controls",
-        "stoiridh-settings"
-    ]
-}
+class PjyunControlsPlugin final : public QQmlExtensionPlugin
+{
+    Q_OBJECT
+    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QQmlExtensionInterface/1.0")
+
+public:
+    void registerTypes(const char *uri) override;
+};
+
+#endif // PJYUN_CONTROLS_PJYUNCONTROLSPLUGIN_HPP

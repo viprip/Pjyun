@@ -19,15 +19,11 @@
 import qbs 1.0
 
 Project {
-    name: "QtQuick"
+    name: "Autotests"
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
     //  References                                                                                //
     ////////////////////////////////////////////////////////////////////////////////////////////////
     references: [
-        "pjyun-controls",
-        "pjyun-controls-cards",
-        "stoiridh-controls",
-        "stoiridh-settings"
     ]
 }
