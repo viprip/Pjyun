@@ -17,8 +17,9 @@
 //                                                                                                //
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 import qbs 1.0
+import Stoiridh.QtQuick
 
-StoiridhQuickPlugin {
+QtQuick.Plugin {
     name: "Pjyun.Controls"
     targetName: "pjyun-controls"
     uri: "Pjyun.Controls"

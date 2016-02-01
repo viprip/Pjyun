@@ -16,7 +16,7 @@
 //            along with this program.  If not, see <http://www.gnu.org/licenses/>.               //
 //                                                                                                //
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-#include <QApplication>
+#include <QGuiApplication>
 #include <QQmlApplicationEngine>
 
 #include <QDir>
@@ -30,7 +30,7 @@ namespace Pjyun {
 */
 inline QString pluginPath()
 {
-    auto path = QString{"%1/../lib/pjyun/qml"}.arg(QApplication::applicationDirPath());
+    auto path = QString{"%1/../lib/pjyun/qml"}.arg(QGuiApplication::applicationDirPath());
     return QDir::cleanPath(path);
 }
 
@@ -40,10 +40,10 @@ inline QString pluginPath()
 
 int main(int argc, char **argv)
 {
-    QApplication app{argc, argv};
-    QApplication::setApplicationName(QStringLiteral("pjyun"));
-    QApplication::setApplicationVersion(QStringLiteral("0.1.0"));
-    QApplication::setOrganizationName(QStringLiteral("StoiridhProject"));
+    QGuiApplication app{argc, argv};
+    QGuiApplication::setApplicationName(QStringLiteral("pjyun"));
+    QGuiApplication::setApplicationVersion(QStringLiteral("0.1.0"));
+    QGuiApplication::setOrganizationName(QStringLiteral("StoiridhProject"));
 
     QQmlApplicationEngine engine{};
     engine.addImportPath(Pjyun::pluginPath());

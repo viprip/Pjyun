@@ -27,7 +27,7 @@ Project {
     ////////////////////////////////////////////////////////////////////////////////////////////////
     //  Properties                                                                                //
     ////////////////////////////////////////////////////////////////////////////////////////////////
-    property string productName: "pjyun"
+    readonly property string productName: "pjyun"
 
     readonly property path binaryDirectory: 'bin'
     readonly property path librariesDirectory: FileInfo.joinPaths('lib', productName)

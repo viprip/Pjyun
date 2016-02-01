@@ -17,8 +17,9 @@
 //                                                                                                //
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 import qbs 1.0
+import Stoiridh.QtQuick
 
-StoiridhQuickTest {
+QtQuick.QmlAutotest {
     name: "Pjyun.Controls.Cards Autotests"
     testName: "pjyun_controls_cards"
 

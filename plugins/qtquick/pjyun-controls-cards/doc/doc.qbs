@@ -17,8 +17,9 @@
 //                                                                                                //
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 import qbs 1.0
+import Stoiridh.Qt
 
-StoiridhDocumentation {
+Qt.Documentation {
     name: "Pjyun.Controls.Cards Documentation"
     baseName: "pjyuncontrolscards"
 }
