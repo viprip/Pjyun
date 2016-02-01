@@ -22,43 +22,13 @@ import Stoiridh.Settings 1.0
 
 ApplicationWindow {
     id: mainWindow
-    title: "Pjyun"
-    minimumWidth: 800
-    minimumHeight: 600
-    visible: true
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
     //  Object properties                                                                         //
     ////////////////////////////////////////////////////////////////////////////////////////////////
-    menuBar: MenuBar {
-        Menu {
-            title: qsTr("&File")
-
-            Menu {
-                title: qsTr("&New")
-
-                MenuItem {
-                    text: qsTr("&Project")
-                    shortcut: StandardKey.New
-                }
-            }
-
-            MenuItem {
-                text: qsTr("E&xit")
-                shortcut: StandardKey.Quit
-
-                onTriggered: {
-                    SettingManager.save()
-                    Qt.quit()
-                }
-            }
-        }
-    }
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    //  Events                                                                                    //
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    onClosing: SettingManager.save()
-    Component.onCompleted: SettingManager.load()
+    title: "Pjyun"
+    minimumWidth: 800; minimumHeight: 600
+    visible: true
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
     //  Child objects                                                                             //
@@ -66,12 +36,20 @@ ApplicationWindow {
     MainForm {
         anchors.fill: parent
     }
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    //  Settings                                                                                  //
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    GroupSettings {
-        name: "MainWindow"
 
-        WindowSetting { window: mainWindow }
+    GroupSettings {
+        name: "Application"
+
+        WindowSettings {
+            name: "MainWindow"
+            x: 120; y: 120; width: 800; height: 600
+            preferredPosition: WindowSettings.Centred
+            window: mainWindow
+        }
     }
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    //  Events                                                                                    //
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    onClosing: SettingsManager.save()
+    Component.onCompleted: SettingsManager.load()
 }
