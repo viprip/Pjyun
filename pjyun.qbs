@@ -30,9 +30,10 @@ Project {
     readonly property string productName: "pjyun"
 
     readonly property path binaryDirectory: 'bin'
-    readonly property path librariesDirectory: FileInfo.joinPaths('lib', productName)
-    readonly property path pluginsDirectory: FileInfo.joinPaths(librariesDirectory, 'plugins')
-    readonly property path qmlDirectory: FileInfo.joinPaths(librariesDirectory, 'qml')
+    readonly property path librariesDirectory: FileInfo.joinPaths('lib')
+    readonly property path pluginsDirectory: FileInfo.joinPaths(librariesDirectory, productName,
+                                                                'plugins')
+    readonly property path qmlDirectory: FileInfo.joinPaths(librariesDirectory, productName, 'qml')
     readonly property path shareDirectory: FileInfo.joinPaths('share', productName)
     readonly property path docDirectory: FileInfo.joinPaths('share', 'doc', productName)
 
