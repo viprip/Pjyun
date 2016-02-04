@@ -29,6 +29,7 @@ Project {
     ////////////////////////////////////////////////////////////////////////////////////////////////
     readonly property string productName: "pjyun"
 
+    // install properties
     readonly property path binaryDirectory: 'bin'
     readonly property path librariesDirectory: FileInfo.joinPaths('lib')
     readonly property path pluginsDirectory: FileInfo.joinPaths(librariesDirectory, productName,
@@ -36,6 +37,10 @@ Project {
     readonly property path qmlDirectory: FileInfo.joinPaths(librariesDirectory, productName, 'qml')
     readonly property path shareDirectory: FileInfo.joinPaths('share', productName)
     readonly property path docDirectory: FileInfo.joinPaths('share', 'doc', productName)
+
+    // testing properties
+    readonly property bool enableTesting: true
+    readonly property bool enableAutotests: true
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
     //  References                                                                                //
