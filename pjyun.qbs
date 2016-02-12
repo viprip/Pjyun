@@ -21,7 +21,7 @@ import qbs.FileInfo
 
 Project {
     name: "Pjyun"
-    minimumQbsVersion: '1.4.0'
+    minimumQbsVersion: '1.4.4'
     qbsSearchPaths: ['qbs']
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
