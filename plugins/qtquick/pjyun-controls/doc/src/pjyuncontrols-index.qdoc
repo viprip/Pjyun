@@ -1,0 +1,12 @@
+/*!
+  \contentspage{index.html}{Pjyun.Controls}
+  \page index.html
+
+  \title Pjyun.Controls
+
+  The Pjyun.Controls module provides a set of UI controls for the Pjyun application.
+
+  \section1 Controls
+  The following controls are used to make the user interfaces of the Pjyun application.
+  \annotatedlist pjyun_controls
+*/

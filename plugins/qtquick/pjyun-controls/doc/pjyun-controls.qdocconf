@@ -1,0 +1,44 @@
+include($QT_INSTALL_DOCS/global/fileextensions.qdocconf)
+include($QT_INSTALL_DOCS/global/macros.qdocconf)
+include($STOIRIDH_INSTALL_DOCS/global/stoiridh-html-templates-offline.qdocconf)
+
+project     = Pjyun.Controls
+description = Pjyun.Controls Reference Documentation
+version     = $PROJECT_VERSION
+
+outputdir      = $OUTDIR/pjyuncontrols
+outputencoding = UTF-8
+sourceencoding = UTF-8
+
+headerdirs += \
+    $PROJECT_DIR/src
+sourcedirs += \
+    $SOURCE_DIR \
+    $PROJECT_DIR/src
+
+indexes += \
+    $QDOC_INDEX_DIR/qtcore/qtcore.index \
+    $QDOC_INDEX_DIR/qtgui/qtgui.index \
+    $QDOC_INDEX_DIR/qtqml/qtqml.index \
+    $QDOC_INDEX_DIR/qtquick/qtquick.index \
+    $QDOC_INDEX_DIR/qtquickcontrols/qtquickcontrols.index \
+
+qhp.projects = PjyunControls
+
+qhp.PjyunControls.file          = pjyuncontrols.qhp
+qhp.PjyunControls.namespace     = uk.co.stoiridhproject.pjyuncontrols.$PROJECT_VERSION_TAG
+qhp.PjyunControls.virtualFolder = pjyuncontrols
+qhp.PjyunControls.indexTitle    = Pjyun.Controls
+qhp.PjyunControls.indexRoot     =
+
+qhp.PjyunControls.subprojects = types
+
+qhp.PjyunControls.subprojects.types.title      = QML Types
+qhp.PjyunControls.subprojects.types.indexTitle = Pjyun.Controls QML Types
+qhp.PjyunControls.subprojects.types.selectors  = group:pjyun_controls
+qhp.PjyunControls.subprojects.types.sortPages  = true
+
+tagfile = pjyuncontrols.tags
+
+navigation.landingpage  = "Pjyun.Controls"
+navigation.qmltypespage = "Pjyun.Controls QML Types"

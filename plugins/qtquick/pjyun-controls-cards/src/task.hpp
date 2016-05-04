@@ -16,40 +16,70 @@
 //            along with this program.  If not, see <http://www.gnu.org/licenses/>.               //
 //                                                                                                //
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-import QtQuick 2.5
-import QtQuick.Controls 1.4
-import Stoiridh.Settings 1.0
+#ifndef PJYUN_CONTROLS_CARDS_TASK_HPP
+#define PJYUN_CONTROLS_CARDS_TASK_HPP
 
-ApplicationWindow {
-    id: mainWindow
+#include <QObject>
+#include <QPointer>
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    //  Object properties                                                                         //
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    title: "Pjyun"
-    minimumWidth: 800; minimumHeight: 600
-    visible: true
+class TaskController;
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    //  Child objects                                                                             //
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    MainForm {
-        anchors.fill: parent
-    }
+class Task : public QObject
+{
+    Q_OBJECT
+    Q_PROPERTY(QString title READ title WRITE setTitle NOTIFY titleChanged FINAL)
+    Q_PROPERTY(QString description READ description WRITE setDescription NOTIFY descriptionChanged FINAL)
+    Q_PROPERTY(bool completed READ isCompleted WRITE setCompleted NOTIFY completedChanged FINAL)
+    Q_PROPERTY(TaskController* controller READ controller WRITE setController NOTIFY controllerChanged FINAL)
 
-    GroupSettings {
-        name: "Application"
+public:
+    explicit Task(QObject *parent = nullptr);
+    ~Task();
 
-        WindowSettings {
-            name: "MainWindow"
-            x: 120; y: 120; width: 800; height: 600
-            preferredPosition: WindowSettings.Centred
-            window: mainWindow
-        }
-    }
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    //  Events                                                                                    //
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    onClosing: SettingsManager.save()
-    Component.onCompleted: SettingsManager.load()
+    inline QString title() const;
+    void setTitle(QString title);
+
+    inline QString description() const;
+    void setDescription(QString description);
+
+    inline bool isCompleted() const;
+    void setCompleted(bool completed);
+
+    TaskController *controller() const;
+    void setController(TaskController *controller);
+
+signals:
+    void titleChanged();
+    void descriptionChanged();
+    void completedChanged();
+    void controllerChanged();
+
+private:
+    Q_DISABLE_COPY(Task)
+
+    QString m_title;
+    QString m_description;
+    bool m_completed{false};
+    QPointer<TaskController> m_controller;
+};
+
+//--------------------------------------------------------------------------------------------------
+
+inline QString Task::title() const
+{
+    return m_title;
 }
+
+inline QString Task::description() const
+{
+    return m_description;
+}
+
+inline bool Task::isCompleted() const
+{
+    return m_completed;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#endif // PJYUN_CONTROLS_CARDS_TASK_HPP

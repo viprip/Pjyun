@@ -1,0 +1,44 @@
+include($QT_INSTALL_DOCS/global/fileextensions.qdocconf)
+include($QT_INSTALL_DOCS/global/macros.qdocconf)
+include($STOIRIDH_INSTALL_DOCS/global/stoiridh-html-templates-offline.qdocconf)
+
+project     = Pjyun.Controls.Cards
+description = Pjyun.Controls.Cards Reference Documentation
+version     = $PROJECT_VERSION
+
+outputdir      = $OUTDIR/pjyuncontrolscards
+outputencoding = UTF-8
+sourceencoding = UTF-8
+
+headerdirs += \
+    $PROJECT_DIR/src
+sourcedirs += \
+    $SOURCE_DIR \
+    $PROJECT_DIR/src
+
+indexes += \
+    $QDOC_INDEX_DIR/qtcore/qtcore.index \
+    $QDOC_INDEX_DIR/qtgui/qtgui.index \
+    $QDOC_INDEX_DIR/qtqml/qtqml.index \
+    $QDOC_INDEX_DIR/qtquick/qtquick.index \
+    $QDOC_INDEX_DIR/qtquickcontrols/qtquickcontrols.index \
+
+qhp.projects = PjyunControlsCards
+
+qhp.PjyunControlsCards.file          = pjyuncontrolscards.qhp
+qhp.PjyunControlsCards.namespace     = uk.co.stoiridhproject.pjyuncontrolscards.$PROJECT_VERSION_TAG
+qhp.PjyunControlsCards.virtualFolder = pjyuncontrolscards
+qhp.PjyunControlsCards.indexTitle    = Pjyun.Controls.Cards
+qhp.PjyunControlsCards.indexRoot     =
+
+qhp.PjyunControlsCards.subprojects = types
+
+qhp.PjyunControlsCards.subprojects.types.title      = QML Types
+qhp.PjyunControlsCards.subprojects.types.indexTitle = Pjyun.Controls.Cards QML Types
+qhp.PjyunControlsCards.subprojects.types.selectors  = qmlclass qmltypes group:pjyun_controls_cards
+qhp.PjyunControlsCards.subprojects.types.sortPages  = true
+
+tagfile = pjyuncontrolscards.tags
+
+navigation.landingpage  = "Pjyun.Controls.Cards"
+navigation.qmltypespage = "Pjyun.Controls.Cards QML Types"

@@ -16,40 +16,64 @@
 //            along with this program.  If not, see <http://www.gnu.org/licenses/>.               //
 //                                                                                                //
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-import QtQuick 2.5
-import QtQuick.Controls 1.4
-import Stoiridh.Settings 1.0
+#ifndef PJYUN_CONTROLS_CARDS_TASKGROUP_HPP
+#define PJYUN_CONTROLS_CARDS_TASKGROUP_HPP
 
-ApplicationWindow {
-    id: mainWindow
+#include <QObject>
+#include <QQmlListProperty>
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    //  Object properties                                                                         //
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    title: "Pjyun"
-    minimumWidth: 800; minimumHeight: 600
-    visible: true
+#include "task.hpp"
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    //  Child objects                                                                             //
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    MainForm {
-        anchors.fill: parent
-    }
+class TaskGroup : public QObject
+{
+    Q_OBJECT
+    Q_PROPERTY(QQmlListProperty<Task> tasks READ tasks NOTIFY tasksChanged FINAL)
+    Q_PROPERTY(bool empty READ isEmpty FINAL)
+    Q_PROPERTY(int count READ count FINAL)
+    Q_CLASSINFO("DefaultProperty", "tasks")
 
-    GroupSettings {
-        name: "Application"
+public:
+    explicit TaskGroup(QObject *parent = nullptr);
 
-        WindowSettings {
-            name: "MainWindow"
-            x: 120; y: 120; width: 800; height: 600
-            preferredPosition: WindowSettings.Centred
-            window: mainWindow
-        }
-    }
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    //  Events                                                                                    //
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    onClosing: SettingsManager.save()
-    Component.onCompleted: SettingsManager.load()
+    QQmlListProperty<Task> tasks();
+
+    inline bool isEmpty() const;
+    inline int count() const;
+
+    Q_INVOKABLE void add(Task *task);
+    Q_INVOKABLE void insert(int index, Task *task);
+    Q_INVOKABLE void removeAt(int index);
+    Q_INVOKABLE Task *takeAt(int index);
+    Q_INVOKABLE Task *at(int index) const;
+    Q_INVOKABLE void clear();
+
+signals:
+    void tasksChanged();
+
+private:
+    static void task_append(QQmlListProperty<Task> *property, Task *task);
+    static Task *task_at(QQmlListProperty<Task> *property, int index);
+    static void task_clear(QQmlListProperty<Task> *property);
+    static int task_count(QQmlListProperty<Task> *property);
+
+private:
+    Q_DISABLE_COPY(TaskGroup)
+
+    QList<Task *> m_tasks;
+};
+
+//--------------------------------------------------------------------------------------------------
+
+inline bool TaskGroup::isEmpty() const
+{
+    return m_tasks.isEmpty();
 }
+
+inline int TaskGroup::count() const
+{
+    return m_tasks.count();
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#endif // PJYUN_CONTROLS_CARDS_TASKGROUP_HPP

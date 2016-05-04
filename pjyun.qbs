@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                //
-//            Copyright (C) 2015 William McKIE                                                    //
+//            Copyright (C) 2015-2016 William McKIE                                               //
 //                                                                                                //
 //            This program is free software: you can redistribute it and/or modify                //
 //            it under the terms of the GNU General Public License as published by                //
@@ -21,20 +21,26 @@ import qbs.FileInfo
 
 Project {
     name: "Pjyun"
-    minimumQbsVersion: '1.4.0'
+    minimumQbsVersion: '1.4.4'
     qbsSearchPaths: ['qbs']
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
     //  Properties                                                                                //
     ////////////////////////////////////////////////////////////////////////////////////////////////
-    property string productName: "pjyun"
+    readonly property string productName: "pjyun"
 
+    // install properties
     readonly property path binaryDirectory: 'bin'
-    readonly property path librariesDirectory: FileInfo.joinPaths('lib', productName)
-    readonly property path pluginsDirectory: FileInfo.joinPaths(librariesDirectory, 'plugins')
-    readonly property path qmlDirectory: FileInfo.joinPaths(librariesDirectory, 'qml')
+    readonly property path librariesDirectory: FileInfo.joinPaths('lib')
+    readonly property path pluginsDirectory: FileInfo.joinPaths(librariesDirectory, productName,
+                                                                'plugins')
+    readonly property path qmlDirectory: FileInfo.joinPaths(librariesDirectory, productName, 'qml')
     readonly property path shareDirectory: FileInfo.joinPaths('share', productName)
     readonly property path docDirectory: FileInfo.joinPaths('share', 'doc', productName)
+
+    // testing properties
+    readonly property bool enableTesting: true
+    readonly property bool enableAutotests: true
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
     //  References                                                                                //

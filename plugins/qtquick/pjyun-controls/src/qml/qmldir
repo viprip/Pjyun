@@ -1,0 +1,3 @@
+module Pjyun.Controls
+plugin pjyun-controls
+classname PjyunControlsPlugin

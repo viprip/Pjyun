@@ -7,3 +7,6 @@
 [submodule "plugins/qtquick/stoiridh-settings"]
 	path = plugins/qtquick/stoiridh-settings
 	url = git@github.com:viprip/stoiridh.settings.git
+[submodule "plugins/qtquick/stoiridh-controls"]
+	path = plugins/qtquick/stoiridh-controls
+	url = git@github.com:viprip/stoiridh.controls.git

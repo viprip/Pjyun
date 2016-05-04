@@ -16,40 +16,49 @@
 //            along with this program.  If not, see <http://www.gnu.org/licenses/>.               //
 //                                                                                                //
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-import QtQuick 2.5
-import QtQuick.Controls 1.4
-import Stoiridh.Settings 1.0
+#ifndef PJYUN_CONTROLS_CARDS_TASKCONTROLLER_HPP
+#define PJYUN_CONTROLS_CARDS_TASKCONTROLLER_HPP
 
-ApplicationWindow {
-    id: mainWindow
+#include <QObject>
+#include <QPointer>
+#include <QVector>
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    //  Object properties                                                                         //
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    title: "Pjyun"
-    minimumWidth: 800; minimumHeight: 600
-    visible: true
+class Task;
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    //  Child objects                                                                             //
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    MainForm {
-        anchors.fill: parent
-    }
+class TaskController : public QObject
+{
+    Q_OBJECT
+    Q_PROPERTY(bool condition READ condition NOTIFY conditionChanged)
 
-    GroupSettings {
-        name: "Application"
+public:
+    explicit TaskController(QObject *parent = nullptr);
 
-        WindowSettings {
-            name: "MainWindow"
-            x: 120; y: 120; width: 800; height: 600
-            preferredPosition: WindowSettings.Centred
-            window: mainWindow
-        }
-    }
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    //  Events                                                                                    //
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    onClosing: SettingsManager.save()
-    Component.onCompleted: SettingsManager.load()
+    inline bool condition() const;
+
+    void addTask(Task *task);
+    void removeTask(Task *task);
+
+signals:
+    void conditionChanged();
+    void completed();
+
+private slots:
+    void evaluate();
+
+private:
+    Q_DISABLE_COPY(TaskController)
+
+    QVector<QPointer<Task>> m_tasks;
+    bool m_condition{false};
+};
+
+//--------------------------------------------------------------------------------------------------
+
+inline bool TaskController::condition() const
+{
+    return m_condition;
 }
+
+//--------------------------------------------------------------------------------------------------
+
+#endif // PJYUN_CONTROLS_CARDS_TASKCONTROLLER_HPP

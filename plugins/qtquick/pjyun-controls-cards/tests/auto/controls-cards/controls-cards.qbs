@@ -16,40 +16,17 @@
 //            along with this program.  If not, see <http://www.gnu.org/licenses/>.               //
 //                                                                                                //
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-import QtQuick 2.5
-import QtQuick.Controls 1.4
-import Stoiridh.Settings 1.0
+import qbs 1.0
+import Stoiridh.QtQuick
 
-ApplicationWindow {
-    id: mainWindow
-
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    //  Object properties                                                                         //
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    title: "Pjyun"
-    minimumWidth: 800; minimumHeight: 600
-    visible: true
+QtQuick.QmlAutotest {
+    name: "Pjyun.Controls.Cards Autotests"
+    testName: "pjyun_controls_cards"
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
-    //  Child objects                                                                             //
+    //  Sources                                                                                   //
     ////////////////////////////////////////////////////////////////////////////////////////////////
-    MainForm {
-        anchors.fill: parent
-    }
-
-    GroupSettings {
-        name: "Application"
-
-        WindowSettings {
-            name: "MainWindow"
-            x: 120; y: 120; width: 800; height: 600
-            preferredPosition: WindowSettings.Centred
-            window: mainWindow
-        }
-    }
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    //  Events                                                                                    //
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    onClosing: SettingsManager.save()
-    Component.onCompleted: SettingsManager.load()
+    files: [
+        "tst_pjyun_controls_cards.cpp",
+    ]
 }
