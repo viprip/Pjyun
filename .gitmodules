@@ -3,7 +3,7 @@
 	url = git@github.com:viprip/stoiridh-qdoc-template
 [submodule "qbs"]
 	path = config/qbs
-	url = git@github.com:viprip/stoiridh-qbs-configuration
+	url = git@github.com:viprip/Stoiridh-Qbs-Tools.git
 [submodule "plugins/qtquick/stoiridh-settings"]
 	path = plugins/qtquick/stoiridh-settings
 	url = git@github.com:viprip/stoiridh.settings.git
