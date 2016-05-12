@@ -22,7 +22,7 @@ import qbs.FileInfo
 Project {
     name: "Pjyun"
     minimumQbsVersion: '1.4.4'
-    qbsSearchPaths: ['qbs']
+    qbsSearchPaths: ['config/qbs']
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
     //  Properties                                                                                //
@@ -40,6 +40,7 @@ Project {
 
     // testing properties
     readonly property bool enableTesting: true
+    readonly property bool enableInternalTesting: true
     readonly property bool enableAutotests: true
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
